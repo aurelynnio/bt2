@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:text="${action == 'add' ? 'Add Book' : 'Edit Book'}">
+      Book Form
+    </title>
+  </head>
+  <body>
+    <h1 th:text="${action == 'add' ? 'Add Book' : 'Edit Book'}">Form</h1>
+    <form
+      th:action="${action == 'add' ? '/books/add' : '/books/edit'}"
+      th:object="${book}"
+      method="post"
+    >
+      <div th:if="${action == 'edit'}">
+        <label>ID:</label>
+        <input type="text" th:field="*{id}" readonly />
+      </div>
+      <div>
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" />
+      </div>
+      <div>
+        <label>Author:</label>
+        <input type="text" th:field="*{author}" />
+      </div>
+      <div>
+        <button type="submit" th:text="${action == 'add' ? 'Add' : 'Save'}">
+          Submit
+        </button>
+        <a th:href="@{/books}">Cancel</a>
+      </div>
+    </form>
+  </body>
+</html>

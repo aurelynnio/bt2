@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Book;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Book;
 
 @Service
 public class BookService {
@@ -32,6 +33,10 @@ public class BookService {
 
     // 3. Thêm sách mới
     public void addBook(Book book) {
+        if (book.getId() == 0) {
+            int maxId = books.stream().mapToInt(Book::getId).max().orElse(0);
+            book.setId(maxId + 1);
+        }
         books.add(book);
     }
 

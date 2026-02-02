@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
+
 import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,5 +48,13 @@ public class BookController {
     public String deleteBook(@PathVariable int id) {
         bookService.deleteBook(id);
         return "Book deleted successfully!";
+    }
+    @GetMapping("/")
+    public List<Book> getBooks(){
+        Book book = new Book();
+        book.setId(1);
+        book.setTitle("J2EE");
+        book.setAuthor("Huy Cuong");
+        return Arrays.asList(book);
     }
 }
