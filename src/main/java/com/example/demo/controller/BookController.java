@@ -61,8 +61,4 @@ public class BookController {
     public String sayHello(){
         return "Hello Spring Boot!";
     }
-    @GetMapping("/greet/{name}")
-    public String greet(@PathVariable String name){
-        return "Hello, " + name + "!";
-    }
 }
