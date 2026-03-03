@@ -57,4 +57,8 @@ public class BookController {
         book.setAuthor("Huy Cuong");
         return Arrays.asList(book);
     }
+    @GetMapping("/hello")
+    public String sayHello(){
+        return "Hello Spring Boot!";
+    }
 }
